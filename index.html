@@ -1,10 +1,44 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>你好，GitHub</title>
-  </head>
-  <body>
-    <h1>666</h1>
-  </body>
+    <head>
+        <meta charset="UTF-8">
+        <script>
+            const card = [
+                { id: 1, name: 'cat', cname: '貓', point: 3 },
+                { id: 2, name: 'dog', cname: '狗', point: 3 },
+                { id: 3, name: 'apple', cname: '蘋果', point: 5 },
+            ];
+        </script>
+    </head>
+    <body>
+        <h1>This is a test game</h1>
+        <div id="output">hello</div>
+        <script>
+            function getRandomInt(min, max) {
+                return Math.floor(Math.random() * (max - min + 1) + min);
+            }
+            function shuffle(numbers) {
+                for (let i = numbers.length - 1; i > 0; i--) {
+                    let j = Math.floor(Math.random() * (i + 1));
+                    [numbers[i], numbers[j]] = [numbers[j], numbers[i]];
+                }
+            }
+            var output = "";
+                var chosen = Math.floor(Math.random() * card.length);
+                output += card[chosen].name + "\n";
+                var numbers = [chosen];
+                while (numbers.length < 4) {
+                    var randomNumber = getRandomInt(0, card.length - 1);
+                    if (!numbers.includes(randomNumber)) {
+                        numbers.push(randomNumber);
+                    }
+                }
+                shuffle(numbers);
+                for (let i = 0; i < 4; i++) {
+                    output += card[numbers[i]].cname + " ";
+                }
+
+            document.getElementById("output").innerText = output;
+        </script>
+    </body>
 </html>
